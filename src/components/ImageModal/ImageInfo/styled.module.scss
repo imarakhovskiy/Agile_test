@@ -1,0 +1,29 @@
+.imageInfo {
+    position: absolute;
+    bottom: 5rem;
+    left: 7rem;
+    max-width: 10rem;
+    background-color: white;
+    padding: 1.3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.author {
+    text-overflow: ellipsis;
+    margin: 0 0 1rem;
+    font-size: 20px;
+}
+
+.camera {
+    text-overflow: ellipsis;
+    margin: 0 0 1rem;
+    font-size: 14px;
+}
+
+.tags {
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size: 12px;
+}

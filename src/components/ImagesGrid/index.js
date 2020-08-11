@@ -1,1 +1,1 @@
-export * from './ImagesGrid.jsx'
+export * from './ImagesGrid'

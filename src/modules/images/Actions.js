@@ -28,9 +28,13 @@ export const fetchImages = dispatch => (token, page) => {
         .catch(error => {dispatch(getImagesError(error))})
 }
 
-export const fetchImageById = dispatch => id => {
+export const fetchImageById = dispatch => (token, id) => {
     dispatch(getImageById(id))
-    return API.get(`${IMAGES}/${id}`)
-        .then(({ info }) => {dispatch(getImageByIdSuccess({ id, info }))})
+    return API.get(`${IMAGES}/${id}`, {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        })
+        .then((data) => {dispatch(getImageByIdSuccess(data))})
         .catch(err => {dispatch(getImageByIdError({ id, err }))})
 }

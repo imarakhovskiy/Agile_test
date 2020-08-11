@@ -17,9 +17,7 @@ const INITIAL_STATE = {
         pageCount: 0,
         pictures: []
     },
-    imagesById: {
-        value: {}
-    },
+    imagesById: {},
 }
 
 const HANDLERS = {
@@ -42,24 +40,23 @@ const HANDLERS = {
                 error: payload,
             }
         }),
-    [GET_IMAGE_BY_ID]: (state, { payload: { id } }) => ({ ...state, imagesById: {
+    [GET_IMAGE_BY_ID]: (state, { payload }) => ({ ...state, imagesById: {
             ...state.imagesById,
-            [id]: {
+            [payload]: {
                 isFetching: true,
                 error: null,
                 info: null,
             }
         }}),
-    [GET_IMAGE_BY_ID_SUCCESS]: (state, { payload: { id, info } }) => ({
+    [GET_IMAGE_BY_ID_SUCCESS]: (state, { payload: { id, ...rest } }) => ({
         ...state,
         imagesById: {
             ...state.imagesById,
-            value: {
-                ...state.imagesById.value,
-                [id]: {
-                    isFetching: false,
-                    info
-                }
+            [id]: {
+                ...state.imagesById[id],
+                isFetching: false,
+                id,
+                ...rest
             }
         }
     }),
@@ -67,12 +64,10 @@ const HANDLERS = {
         ...state,
         imagesById: {
             ...state.imagesById,
-            value: {
-                ...state.imagesById.value,
-                [id]: {
-                    isFetching: false,
-                    error
-                }
+            [id]: {
+                ...state.imagesById[id],
+                isFetching: false,
+                error
             }
         }
     }),
