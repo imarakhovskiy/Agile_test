@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import authReducer from 'modules/auth'
+import imagesReducer from 'modules/images'
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    auth: authReducer,
+    images: imagesReducer,
   },
 });
