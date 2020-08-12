@@ -20,7 +20,6 @@ export const ImageModal = ({ images, currIndex, setSelectedImage, closeModal }) 
         if (e.keyCode === 37) {
             setSelectedImage(Math.max(currIndex - 1, 0))
         } else if (e.keyCode === 39) {
-            console.log()
             setSelectedImage(Math.min(currIndex + 1, images.length - 1))
         }
     }, [currIndex])
